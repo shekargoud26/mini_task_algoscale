@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 
-from adminpanel import db, auth
+from adminpanel import db, auth, admin
 
 # defining the application factory
 def create_app(test_config=None):
@@ -23,5 +23,10 @@ def create_app(test_config=None):
     db.init_app(app)
     # registering blueprints for auth module
     app.register_blueprint(auth.bp)
+    # registering blueprints for admin module
+    app.register_blueprint(admin.bp)
+
+    app.add_url_rule('/', endpoint='index')
+
 
     return app

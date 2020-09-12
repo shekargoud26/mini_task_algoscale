@@ -70,8 +70,7 @@ def login():
             session.clear()
             session['user_id'] = user['id']
             # returning userid to verify login
-            # TODO: replace userid with index page
-            return user['id']
+            return redirect(url_for('index'))
 
     return render_template('auth/login.html')
 
