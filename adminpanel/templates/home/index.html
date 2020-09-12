@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Users{% endblock %}</h1>
 {% if g.user %}
-
+    <p>Welcome {{g.user['username']}}</p>
 {% endif %}
 {% endblock %}
 
@@ -11,20 +10,21 @@
 
 <article class="users">
     <header>
-        <div>
-            <form action="{{ url_for('admin.delete') }}" method='post'>
+        <div class='container'>
+            <div class='child'><h1>Users</h1></div>
+            <div class='child'>
+                <form action="{{ url_for('admin.delete') }}" method='post'>
 
-                <label for="users">Choose a user id:</label>
+                    <label for="users">Choose a user id:</label>
 
-                <select name="delete_user" id="users">
-                    {% for user in users %}
+                    <select name="delete_user" id="users">
+                        {% for user in users %}
                         <option> {{user["username"]}} </option>
-                    {% endfor %}
-                </select> 
-                <input type="submit" value="Delete">
-            </form>
-            
-
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
         </div>
     </header>
 
