@@ -5,7 +5,7 @@ from flask import current_app, g
 from flask.cli import with_appcontext
 
 def init_app(app):
-    # closing any previous connections
+    # tellng the flask app to run close_db while exiting
     app.teardown_appcontext(close_db)
     #registering the init-db flask command
     app.cli.add_command(init_db_cmd)
